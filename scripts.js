@@ -12,15 +12,15 @@ let cookieClicker = document.getElementById('cookie-clicker');
 
 
 //everytime a user clicks the button, their cookies are increased by the value of their clickPower.
-cookieClicker.addEventListener("click", function() {
-  cookieCount = cookieCount + clickPower;
-  refreshCookieCount()
-})
+  cookieClicker.addEventListener("click", function() {
+    cookieCount = cookieCount + clickPower;
+    refreshCookieCount()
+  })
 
 //refresh cookies
 let refreshCookieCount = function() {
   cookieCounter.innerHTML = cookieCount;
-}
+  }
 
 /********************************
 
@@ -36,27 +36,29 @@ let buyClickPower = document.getElementById('buy-click-power');
 let clickPowerPrice = document.getElementById('click-power-price');
 let clickPowerLevel = document.getElementById('click-power-level');
 let clickPowerMultiple = document.getElementById('click-power-multiple');
-cookieCounter.innerHTML = cookieCount;
+  cookieCounter.innerHTML = cookieCount;
 
-buyClickPower.addEventListener("click", function() {
-if (cookieCount >= clickPowerPriceAmount) {
-  console.log("Item succesfully Bought");
-} else {
-  console.log("You don't have enough cookies!");
-}
-})
+  buyClickPower.addEventListener("click", function() {
+  if (cookieCount >= clickPowerPriceAmount) {
+    console.log("Item succesfully Bought");
+  } else {
+    console.log("You don't have enough cookies!");
+  }
+  })
 
 let refreshPowerClick = function() {
   clickPowerLevel.innerHTML = clickPowerLevelNumber;
   clickPowerPrice.innerHTML = clickPowerPriceAmount;
   clickPowerMultiple.innerHTML = clickPower;
-}
+  }
 
-clickPowerLevelNumber += 1;
+  clickPower += 1 * Math.floor(clickPowerLevelNumber * 1.05);
 
-clickPowerPriceAmount = Math.floor(clickPowerPriceAmount * 1.33);
+  clickPowerLevelNumber += 1;
 
-refreshPowerClick();
+  clickPowerPriceAmount = Math.floor(clickPowerPriceAmount * 1.33);
+
+  refreshPowerClick();
 
 /********************************
 
@@ -88,9 +90,9 @@ buyGrandma.addEventListener("click", function() {
     //update price
   grandmaPriceAmount = Math.floor(grandmaPriceAmount * 1.33);
     //update grandma power
-  grandmaPower += 10;
+  grandmaPower += 10 + Math.floor(grandmaLevelNumber * 1.33);
     //turn autoGrandma on!
-    autoGrandma = true
+    let autoGrandma = true;
     autoGrandmaStart();
     window.setInterval(function(){
       let autoGrandmaStart = function() {
@@ -114,7 +116,7 @@ buyGrandma.addEventListener("click", function() {
     grandmaPrice.innerHTML = grandmaPriceAmount;
     grandmaMultiple.innerHTML = grandmaPower;
   });
-  })
+  }
 
   /********************************
 
@@ -125,7 +127,7 @@ buyGrandma.addEventListener("click", function() {
   //set default values
   let facilityAuto = false;
   let facilityPower = 2000;
-  let facilityPriceAmount = 100000;
+  let facilityPriceAmount = 100;
   let facilityLevelNumber = 0;
   //declare DOM variables
   let buyFacility = document.getElementById('buy-facility');
@@ -146,7 +148,7 @@ buyGrandma.addEventListener("click", function() {
       //update price
       facilityPriceAmount = Math.floor(facilityPriceAmount * 1.33);
       //update facility power
-      facilityPower += 600;
+      facilityPower += 600 + Math.floor(facilityLevelNumber * 1.33);
       //turn autoFacility on!
       facilityAuto = true
       autoFacilityStart();
